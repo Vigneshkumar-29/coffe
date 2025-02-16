@@ -1,12 +1,17 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { Toaster } from "@/components/ui/sonner"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = localFont({
+  src: '../public/fonts/Inter-Regular.woff2',
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Kawaii Café - Cute & Delicious',
@@ -29,9 +34,7 @@ export default function RootLayout({
         >
           <div className="relative min-h-screen flex flex-col">
             <Header />
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
           <Toaster />
